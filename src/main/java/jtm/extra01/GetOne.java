@@ -12,7 +12,18 @@ public class GetOne {
 		// passed number is 6. Path to completion would be:
 		// 6->3->10->5->16->8->4->2->1. Iteration count=8.
 		// HINT: Use while loop.
+
 		int iterationCount = 0;
+
+		while (number != 1) {
+			if (number % 2 == 0) {
+				number=number / 2;
+			} else {
+				number=number * 3 + 1;
+			}
+			iterationCount++;
+		}
+
 		return iterationCount;
 	}
 
@@ -26,5 +37,8 @@ public class GetOne {
 		// smallest number).
 		return 0;
 	}
-
 }
+
+
+
+
