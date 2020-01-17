@@ -35,10 +35,25 @@ public class GetOne {
 		// And return 3, because it has the biggest count of iterations.
 		// (If count of iterations is the same for several numbers, return
 		// smallest number).
-		return 0;
+		
+		int iterationCount = 0;
+		int big=0;
+		int returnNumber=1;
+	
+		for (int i=maxNumber; i>1; i--){
+			iterationCount=this.iterations(i);
+			
+		
+		if (iterationCount>big){
+			big=iterationCount;
+			
+			returnNumber=i;
+		}
+		}
+		
+		return returnNumber;
 	}
 }
-
 
 
 
