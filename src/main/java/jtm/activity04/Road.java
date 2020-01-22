@@ -4,12 +4,48 @@ public class Road {
 	private String from; // Start point
 	private String to; // End point
 	private int distance; // distance in km
+	public Road(String from, String to, int distance) {
+		super();
+		this.from = from;
+		this.to = to;
+		this.distance = distance;
+	}
+	public Road() {
+		this.from= "";
+		this.to="";
+		
+	}
+	public String getFrom() {
+		return from;
+	}
+	public void setFrom(String from) {
+		this.from = from;
+	}
+	public String getTo() {
+		return to;
+	}
+	public void setTo(String to) {
+		this.to = to;
+	}
+	public int getDistance() {
+		return distance;
+	}
+	public void setDistance(int distance) {
+		this.distance = distance;
+	}
+	@Override
+	public String toString() {
+		return from + " — " +to + ", " +  distance + "km";
+	}
+	
 
 	/*- TODO #1
 	 * Select menu Source — Generate Constructor using Fields...
 	 * and create constructor which sets from, to and distance
 	 * values of the newly created object
 	 */
+	
+	
 
 	/*- TODO #2
 	 * Create constructor without parameters, which sets empty

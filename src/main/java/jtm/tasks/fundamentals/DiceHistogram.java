@@ -1,5 +1,7 @@
 package jtm.tasks.fundamentals;
 
+import java.util.Arrays;
+
 public class DiceHistogram {
 
 
@@ -27,7 +29,13 @@ public class DiceHistogram {
         1|####### 7
      */
     public static String histogram(final int results[]) {
-        return null;
-    }
+    	
+    		System.out.println(Arrays.toString(results));
+    		int size = results.length;
+    		int [] arr= new int [results.length];   	
+    	
+    	
+        return Arrays.toString(results);
+    }}
 
-}
+
