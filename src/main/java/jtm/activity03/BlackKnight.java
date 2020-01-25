@@ -20,6 +20,11 @@ public class BlackKnight {
 	public boolean alive; // is knight alive
 
 	public static void setBattle(int initialNumber) {
+
+		knights = new BlackKnight[initialNumber];
+		totalKnights = 0;
+		aliveKnights = 0;
+
 		// TODO initialize new array of knights with the passed size.
 		// Reset total numbers of total and alive knights to zero
 		// START
@@ -28,13 +33,24 @@ public class BlackKnight {
 	}
 
 	public BlackKnight(String name) {
+
+		this.name = name;
+		this.arms = 2;
+		this.legs = 2;
+		this.head = 1;
+		this.alive = true;
+		knights[totalKnights] = this;
+		totalKnights++;
+		aliveKnights++;
+
 		// TODO set name of newly created knight
 		// 1. set proper count of his arms, legs and head,
 		// 2. set his status to alive
 		// 3. put reference of this knight into next free cell of knights static
 		// array
 		// 4. increase number of total and alive knights of static counters
-		// HINT: use "this.name" to access name of knight which otherwise is shadowed
+		// HINT: use "this.name" to access name of knight which otherwise is
+		// shadowed
 		// by parameter of constructor, which is also called "name"
 		// START
 
@@ -42,6 +58,17 @@ public class BlackKnight {
 	}
 
 	public String cutOffArm() {
+		if (alive == true) {
+			if (arms > 0) {
+				arms--;
+				return "Bugger!";
+			} else {
+				return "Haah!";
+			}
+		} else {
+			return "Only chicken beats dead!";
+		}
+
 		// TODO handle cutting off knight's arms in following way:
 		// If knight is dead, return "Only chicken beats dead!"
 		// If knight has some arms, cut one off and return "Bugger!"
@@ -49,10 +76,21 @@ public class BlackKnight {
 		// START
 
 		// END
-		return "";
+
 	}
 
 	public String cutOffLeg() {
+		if (alive == true) {
+			if (legs > 0) {
+				legs--;
+				return "Bollocks!";
+			} else {
+				return "Haah!";
+			}
+		} else {
+			return "Only chicken beats dead!";
+		}
+
 		// TODO handle cutting off legs knight's legs in following way:
 		// If knight is dead, return "Only chicken beats dead!"
 		// If knight has some legs, cut one off and return "Bollocks!"
@@ -60,10 +98,27 @@ public class BlackKnight {
 		// START
 
 		// END
-		return "";
+
 	}
 
 	public String cutOffHead() {
+
+		if (alive != true) {
+
+			return "Only chicken beats dead!";
+		} else {
+			head--;
+			
+			aliveKnights--;
+			deadKnights++;
+			alive=false;
+		}
+		if (aliveKnights > 0) {
+			return "You'l newer win! " + aliveKnights()+ " will still fight!";
+		} else {
+			return "You'l burn in hell forever!";
+		}
+
 		// TODO handle cutting off knight's head in following way:
 		// If knight is dead, return "Only chicken beats dead!"
 		// If knight is alive and has head, cut it off and update
@@ -75,17 +130,38 @@ public class BlackKnight {
 		// START
 
 		// END
-		return "";
+
 	}
 
 	// START
 	private String aliveKnights() {
-		// TODO
+		if(aliveKnights==0){
+			return "";
+		}else{
+			String finala;
+			finala="";
+			for (int i=0; i<knights.length; i++){
+				if (knights[i].alive==true){
+					finala= finala+ knights[i].name+", ";
+					
+				}
+				
+			}
+			finala=finala.substring(0, finala.length()-2);
+			
+			return finala;
+			
+			
+		}
+		}
+		}
+			
+	// TODO
 		// Build comma separated string of knights who are still alive
 		// e.g. if Cnut and Arthur are still alive return Cnut, Arthur
 		// If only Arthur is alive return Arthur
 		// If no one is alive return empty string
-		return null;
-	}
+		
+	
 	// END
-}
+
