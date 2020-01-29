@@ -2,67 +2,100 @@ package jtm.activity06;
 
 public class Martian implements Alien, Cloneable, Humanoid {
 	private int weight;
-	
-	public Martian(int weight){
-		this.weight=42;
-	}
+	private boolean alive;
+	private String[] backpack;
 
 	public Martian() {
-		// TODO Auto-generated constructor stub
+		this(42);
+	}
+
+	public Martian(int weight) {
+		
+		this.weight = weight;
+		this.alive = true;
+		this.backpack=new String[10];
 	}
 
 	@Override
 	public String killHimself() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return "I AM IMMORTAL!";
+
 	}
 
 	@Override
 	public int getArmCount() {
 		// TODO Auto-generated method stub
-		return 0;
+		return ARM_COUNT;
 	}
 
 	@Override
 	public String[] getBackpack() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return backpack;
 	}
 
 	@Override
 	public void addToBackpack(String item) {
-		// TODO Auto-generated method stub
+		for (int i = 0; i < backpack.length; i++) {
+			if (backpack[i] == null) {
+				backpack[i] = item;
+				break;
+			}
+		}
 
 	}
 
 	@Override
 	public int getWeight() {
-		// TODO Auto-generated method stub
-		return 0;
+
+		return weight;
 	}
 
 	@Override
 	public void setWeight(int weight) {
-		// TODO Auto-generated method stub
+		this.weight = weight;
+	
 
 	}
 
 	@Override
 	public void eatHuman(Humanoid humanoid) {
-		// TODO Auto-generated method stub
+		if (humanoid.isAlive().equals("Alive")) {
+			humanoid.killHimself();
+			this.weight = weight + humanoid.getWeight();
+			humanoid.killHimself();
+		}
 
 	}
 
 	@Override
 	public int getLegCount() {
-		// TODO Auto-generated method stub
-		return 0;
+
+		return LEG_COUNT;
 	}
 
 	@Override
 	public String isAlive() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return "I AM IMMORTAL!";
+	}
+
+	protected Object clone() throws CloneNotSupportedException {
+		Martian m = new Martian();
+		m.setArmCount(this.getArmCount());
+		m.setWeight(this.getWeight());
+		m.setLegCount(this.getLegCount());
+
+		return m;
+	}
+
+	private void setLegCount(int legCount) {
+		legCount=7;
+	}
+
+	private void setArmCount(int armCount) {
+		armCount=2;
 	}
 
 }

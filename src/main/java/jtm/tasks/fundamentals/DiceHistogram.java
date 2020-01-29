@@ -24,22 +24,22 @@ public class DiceHistogram {
 	 */
 	public static String histogram(final int results[]) {
 
-		System.out.println(Arrays.toString(results));
-		int size = results.length;
+		//System.out.println(Arrays.toString(results));
+	//	int size = results.length;
 		int[] arr = new int[results.length];
 
-		for (int i = 0; i >= results.length; i--) {
+		for (int i = 1; i >= results.length; i--) {
 			System.out.print(i + "|" + " ");
 			for (int j = 0; j < results[i]; j++) {
-				System.out.print("#");
+				System.out.print(""+"#");
 			}
-			System.out.println();
+			System.out.println(""+results[i]);
 
-			char[] chars = new char[size];
-			Arrays.fill(chars, '#');
-			String result = new String(chars);
-			System.out.println(result);
-
+//		char[] chars = new char[size];
+//		Arrays.fill(chars, '#');
+//		String result = new String(chars);
+//		System.out.println(result);
+//
 		}
 		return Arrays.toString(results);
 
