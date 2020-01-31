@@ -1,5 +1,7 @@
 package jtm.activity09;
 
+import java.util.Objects;
+
 /*- TODO #1
  * Implement Comparable interface with Order class
  * Hint! Use generic type of comparable items in form: Comparable<Order>
@@ -25,9 +27,68 @@ package jtm.activity09;
  * 
  */
 
-public class Order {
+public class Order implements Comparable<Order> {
 	String customer; // Name of the customer
 	String name; // Name of the requested item
 	int count; // Count of the requested items
 
+	public Order(String customer, String name, Integer count) {
+		this.customer = customer;
+		this.name = name;
+		this.count = count;
+
+	}
+
+	public int compareTo(Order order) {
+		if (!this.name.equals(order.name)) {
+			return this.name.compareTo(order.name) > 0 ? 1 : -1;
+		}
+		if (!this.customer.equals(order.customer)) {
+			return this.customer.compareTo(order.customer) > 0 ? 1 : -1;
+		}
+		if (this.count != (order.count)) {
+			if (this.count > order.count) {
+				return 1;
+			} else {
+				return -1;
+			}
+		}
+		return 0;
+
+	}
+
+	public int hashCode() {
+		
+		return Objects.hash(customer,name, count );
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		if (this == object)
+			return true;
+	if (object == null ||getClass() != object.getClass() )
+			return false;
+	
+	
+	
+	
+		Order other = (Order) object;
+		if (count != other.count)
+			return false;
+		if (customer == null) {
+			if (other.customer != null)
+				return false;
+		} else if (!customer.equals(other.customer))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
+
+	public String toString() {
+		return "ItemName" + name + "OrdererName:" + customer + "Count:" + count;
+	}
 }

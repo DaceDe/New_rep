@@ -24,24 +24,43 @@ public class DiceHistogram {
 	 */
 	public static String histogram(final int results[]) {
 
-		//System.out.println(Arrays.toString(results));
-	//	int size = results.length;
-		int[] arr = new int[results.length];
+		// System.out.println(Arrays.toString(results));
+		// int size = results.length;
 
-		for (int i = 1; i >= results.length; i--) {
-			System.out.print(i + "|" + " ");
+		int[] arr = new int[6];
+		//int[]results= new int[100];
+
+		
+		
+		StringBuilder line= new StringBuilder();
+		
+		for (int i = 5; i >= 0; i--) {
+			int s =++i;
+			
+			line.append(String.valueOf(s));
+			line.append("|");
+			i--;
 			for (int j = 0; j < results[i]; j++) {
-				System.out.print(""+"#");
+				line.append("#");
+
 			}
-			System.out.println(""+results[i]);
-
-//		char[] chars = new char[size];
-//		Arrays.fill(chars, '#');
-//		String result = new String(chars);
-//		System.out.println(result);
-//
+			if (results[i] != 0) {
+				int p=results[i];
+				line.append(" ");
+				line.append(String.valueOf(p));
+				line.append("\n");
+			} else {
+				line.append("\n");
+			}
 		}
-		return Arrays.toString(results);
 
+		// System.out.println(""+results[i]);
+
+		// char[] chars = new char[i];
+		// Arrays.fill(chars, '#');
+		// String result = new String(chars);
+		// System.out.println(results);
+
+		return line.toString();
 	}
 }
