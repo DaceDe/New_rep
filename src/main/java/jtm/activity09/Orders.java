@@ -1,9 +1,13 @@
 package jtm.activity09;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Set;
 
 /*- TODO #2
  * Implement Iterator interface with Orders class
@@ -32,7 +36,7 @@ import java.util.ListIterator;
  *  Set of orders should be:
  *  - ItemN: Customer1,Customer2: 4
  */
-public class Orders{
+public class Orders implements Iterator<Order>{
 
 private List<Order>orders;
 private ListIterator<Order>iterator;
@@ -43,8 +47,37 @@ public Orders () {
 }
 
 public void add (Order item){
-	this.iterator.add(item);
-	this.iterator.previous();
+	iterator.add(item);
+	iterator.previous();
+}
+public List<Order> getItemsList() {
+	List<Order>getItemsList=new LinkedList<>(orders);
+	return getItemsList;
+}
+public Set<Order> getItemSet(){
+	Set<Order>getItemSet = new HashSet <>(orders);
+	return getItemSet();
+}
+public void sort(){
+	Collections.sort(orders);
+}
+
+@Override
+public boolean hasNext() {
+	// TODO Auto-generated method stub
+	return iterator.hasNext();
+}
+
+@Override
+public Order next() {
+	// TODO Auto-generated method stub
+	return iterator.next();
+}
+public void remove(){
+	iterator.remove();
+}
+public String toString(){
+	return orders.toString();
 }
 
 }
