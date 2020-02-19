@@ -54,9 +54,9 @@ public List<Order> getItemsList() {
 	List<Order>getItemsList=new LinkedList<>(orders);
 	return getItemsList;
 }
-public Set<Order> getItemSet(){
+public Set<Order> getItemsSet(){
 	Set<Order>getItemSet = new HashSet <>(orders);
-	return getItemSet();
+	return getItemSet;
 }
 public void sort(){
 	Collections.sort(orders);

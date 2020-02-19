@@ -74,15 +74,31 @@ public class PersonRepo extends Person {
 	}
 
 	public String largestPopulation() {
-	
-		
-		
-		Set<Person> unique = new HashSet<>();
-		for (Person getCountry : unique) {
-		    System.out.println(getCountry + ": " + Collections.frequency(personList, getCountry));
+
+		Comparator<Person> compareByCountry = (Person p1, Person p2) -> p1.getCountry().compareTo(p2.getCountry());
+		Collections.sort(personList, compareByCountry);
+		int x = 1;
+
+		int tmp = 0;
+		Person comp = personList.get(0);
+		Person result = personList.get(0);
+		for (Person i : personList) {
+			if (comp.getCountry().equals(i.getCountry())) {
+				x++;
+				comp = i;
+			} else if (!comp.getCountry().equals(i.getCountry())) {
+				if (x > tmp) {
+					result = comp;
+					tmp = x;
+					x = 1;
+					comp = i;
+				} else
+					x = 1;
+				comp = i;
+			}
 		}
-		
-		return getCountry();
+		return result.getCountry();
+
 	}
 
 }
