@@ -70,7 +70,7 @@ public class VendingMachine {
 	 * balance to 0.00
 	 */
 	public double ejectCoinsBack() {
-		coinsInMachine = 0.00;
+		coinsInMachine = 0.0;
 		return coinsInMachine;
 	}
 
